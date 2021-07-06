@@ -106,9 +106,6 @@ class Pix2pix {
 
   async transfer(inputElement, callback = () => {}) {
     const input = tf.browser.fromPixels(inputElement);
-
-    console.log(input);
-    
     const inputData = input.dataSync();
     const floatInput = tf.tensor3d(inputData, input.shape, 'float32');
     const normalizedInput = tf.div(floatInput, tf.scalar(255));

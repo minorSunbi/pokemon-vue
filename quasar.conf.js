@@ -7,7 +7,8 @@
 // https://v2.quasar.dev/quasar-cli/quasar-conf-js
 
 /* eslint-env node */
-const ESLintPlugin = require('eslint-webpack-plugin')
+const ESLintPlugin = require('eslint-webpack-plugin');
+const { QSpinnerBall } = require('quasar');
 const { configure } = require('quasar/wrappers');
 
 module.exports = configure(function (ctx) {
@@ -81,7 +82,14 @@ module.exports = configure(function (ctx) {
 
     // https://v2.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework
     framework: {
-      config: {},
+      config: {
+        loading: {
+          delay: 1000,
+          message: '변환 중...',
+          spinnerColor: 'primary',
+          spinner: 'progress'
+        }
+      },
       iconSet: 'themify',
       // iconSet: 'material-icons', // Quasar icon set
       // lang: 'en-US', // Quasar language pack
@@ -94,7 +102,9 @@ module.exports = configure(function (ctx) {
       // directives: [],
 
       // Quasar plugins
-      plugins: []
+      plugins: [
+        'Loading'
+      ]
     },
 
     // animations: 'all', // --- includes all animations
